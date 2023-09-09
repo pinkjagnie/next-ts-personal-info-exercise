@@ -1,15 +1,27 @@
+"use client";
+
+import React, { useState, FormEvent } from "react";
+
 export default function Home() {
+  const [inputValue, setInputValue] = useState("");
+
+  const submitHandler = (event: FormEvent) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="p-4 shadow-md bg-white rounded-md">
         <h1 className="text-2xl font-semibold mb-4 text-black">
           Enter Your Name
         </h1>
-        <form className="space-y-3">
+        <form onSubmit={submitHandler} className="space-y-3">
           <input
             type="text"
             placeholder="Type your name"
             className="w-full p-2 border border-gray-300 rounded text-black"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
           />
           <button
             type="submit"
