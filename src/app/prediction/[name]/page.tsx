@@ -1,18 +1,34 @@
 import React from "react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const getPredictedAge = async (name: string) => {
   const res = await fetch(`https://api.agify.io?name=${name}`);
+
+  if (!res.ok) {
+    notFound();
+  }
+
   return res.json();
 };
 
 const getPredictedGender = async (name: string) => {
   const res = await fetch(`https://api.genderize.io?name=${name}`);
+
+  if (!res.ok) {
+    notFound();
+  }
+
   return res.json();
 };
 
 const getPredictedNationality = async (name: string) => {
   const res = await fetch(`https://api.nationalize.io?name=${name}`);
+
+  if (!res.ok) {
+    notFound();
+  }
+
   return res.json();
 };
 
